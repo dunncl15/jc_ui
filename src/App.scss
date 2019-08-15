@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  background-color: #f9fafb;
+  height: 100vh;
+  font-family: 'Muli', sans-serif;
+
+  main {
+    width: 100%;
+  }
+}
