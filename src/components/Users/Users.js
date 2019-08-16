@@ -36,7 +36,7 @@ const Users = ({ history }) => {
 
   if (error) return <span>{error}</span>;
   if (!users.length) return <UsersLanding history={history} />;
-  console.log('USERS: ', users);
+
   return (
     <>
       <SearchBar history={history} selected={selected} count={users.length} />
