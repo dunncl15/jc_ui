@@ -1,7 +1,79 @@
 .form-container {
   position: absolute;
   top: 50px;
+  right: 0;
+  height: calc(100% - 50px);
+  width: 65%;
   background-color: #f9fafb;
-  height: 100%;
-  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+  .close-btn {
+    float: right;
+    margin: 10px 13px 0 0;
+    background: transparent;
+    border: none;
+    color: #414c55;
+    cursor: pointer;
+    .material-icons {
+      font-size: 1.5rem;
+    }
+  }
+
+  form {
+    margin: 60px auto;
+    padding: 30px 40px;
+    width: 85%;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 8px 0.5px rgba(0, 0, 0, 0.045);
+    color: #414c55;
+
+    .form-row {
+      &.full {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        .desc-label {
+          color: #414c55;
+          font-weight: 600;
+          font-size: 0.8rem;
+          margin: 0 0 3px 2px;
+        }
+
+        .desc-content {
+          padding: 6px 9px;
+          height: 80px;
+          background-color: #f9fafb;
+          border: 2px solid #e3e8e9;
+          border-radius: 2px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .cta-btn {
+      display: block;
+      width: 110px;
+      margin: 25px 0 5px auto;
+      padding: 8px 20px;
+      border-radius: 2px;
+      border: none;
+      background-color: #2cc692;
+      color: #fff;
+      font-family: 'Muli', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lighten(#2cc692, 5%);
+      }
+      &:disabled {
+        background-color: #e3e8e9;
+        color: #92999e;
+        cursor: no-drop;
+      }
+    }
+  }
 }

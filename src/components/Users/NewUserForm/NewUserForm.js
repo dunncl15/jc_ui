@@ -1,5 +1,6 @@
 import React from 'react';
 import useInput from '../../../hooks/useInput';
+import Input from '../../Input/Input';
 import './NewUserForm.scss';
 
 const NewUserForm = ({ data = {}, id, history, saveNewUser, updateUser }) => {
@@ -42,63 +43,83 @@ const NewUserForm = ({ data = {}, id, history, saveNewUser, updateUser }) => {
 
   return (
     <aside className="form-container">
-      <button onClick={() => history.push('/users')}>X</button>
+      <button className="close-btn" onClick={() => history.push('/users')}>
+        <i className="material-icons">close</i>
+      </button>
       <form>
-        <div>
-          <label htmlFor="firstname">First Name</label>
-          <input
+        <h3>User Information</h3>
+        <div className="form-row">
+          <Input
             id="firstname"
             type="text"
             value={firstname}
-            onChange={e => setFirstName(e)}
+            onChange={setFirstName}
+            label="First Name"
           />
-          <label htmlFor="middlename">Middle Name</label>
-          <input
+          <Input
             id="middlename"
             type="text"
             value={middlename}
-            onChange={e => setMiddleName(e)}
+            onChange={setMiddleName}
+            label="Middle Name"
           />
-          <label htmlFor="lastname">Last Name</label>
-          <input
+          <Input
             id="lastname"
             type="text"
             value={lastname}
-            onChange={e => setLastName(e)}
+            onChange={setLastName}
+            label="Last Name"
           />
         </div>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
+        <div className="form-row">
+          <Input
             id="username"
             type="text"
             value={username}
-            onChange={e => setUserName(e)}
+            onChange={setUserName}
+            label="Username"
+            required
           />
-          <label htmlFor="display-name">Display Name</label>
-          <input
-            id="display-name"
+          <Input
+            id="displayname"
             type="text"
             value={displayname}
-            onChange={e => setDisplayName(e)}
+            onChange={setDisplayName}
+            label="Display Name"
           />
-          <label htmlFor="creation-date">User Creation Date</label>
-          <input id="creation-data" readOnly type="text" value={data.created || ''} />
-        </div>
-        <div>
-          <label htmlFor="email">Company Email</label>
-          <input id="email" type="text" value={email} onChange={e => setEmail(e)} />
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
+          <Input
+            id="creation-date"
             type="text"
-            value={description}
-            onChange={e => setDescription(e)}
+            value={data.created || ''}
+            label="User Creation Date"
+            readOnly
           />
         </div>
-        <button onClick={handleSubmit}>Save User</button>
+        <div className="form-row">
+          <Input
+            id="email"
+            type="text"
+            value={email}
+            onChange={setEmail}
+            label="Company Email"
+            width="double"
+            required
+          />
+        </div>
+        <div className="form-row full">
+          <label className="desc-label" htmlFor="description">
+            Description
+          </label>
+          <textarea
+            className="desc-content"
+            id="description"
+            value={description}
+            onChange={setDescription}
+          />
+        </div>
+        <button className="cta-btn" onClick={handleSubmit} disabled={!username || !email}>
+          Save User
+        </button>
       </form>
     </aside>
   );
