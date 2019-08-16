@@ -5,10 +5,25 @@
   padding: 20px;
   background-color: #fff;
   border-bottom: 0.5px solid #f1f3f4;
+  color: rgb(135, 137, 142);
 
   h1 {
     color: #414c55;
     font-size: 1.75rem;
     text-transform: capitalize;
+    margin-right: auto;
+  }
+
+  span {
+    margin-right: 15px;
+    font-size: 0.9rem;
+  }
+
+  i {
+    color: rgba(135, 137, 142, 0.5);
+    cursor: pointer;
+    &:hover {
+      color: rgba(135, 137, 142, 1);
+    }
   }
 }
