@@ -21,9 +21,15 @@ const SearchBar = ({ history, selected, count }) => {
         <button>Filter By</button>
       </div>
       <span className="user-count">{displayUserCount()}</span>
-      <button className="cta-btn success">resend email</button>
-      <button className="cta-btn warn">delete</button>
-      <button className="cta-btn default">more actions</button>
+      <button disabled={!selected.length} className="cta-btn success">
+        resend email
+      </button>
+      <button disabled={!selected.length} className="cta-btn warn">
+        delete
+      </button>
+      <button disabled={!selected.length} className="cta-btn default">
+        more actions
+      </button>
     </div>
   );
 };

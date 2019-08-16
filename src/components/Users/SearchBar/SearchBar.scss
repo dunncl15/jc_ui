@@ -41,6 +41,12 @@
     &.default {
       background-color: #12849a;
     }
+
+    &:disabled {
+      background-color: #e3e8e9;
+      color: #92999e;
+      cursor: no-drop;
+    }
   }
 
   .search-wrapper {
