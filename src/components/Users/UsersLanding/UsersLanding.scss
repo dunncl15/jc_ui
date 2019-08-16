@@ -6,10 +6,15 @@
   position: absolute;
   top: 0;
   bottom: 250px;
+  height: 100%;
   color: #202d38;
 
-  * {
-    margin: 20px 0;
+  h2,
+  .default-img,
+  p,
+  .cta-btn,
+  .learn-more {
+    margin: 15px 0;
   }
 
   h2 {
