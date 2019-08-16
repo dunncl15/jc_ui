@@ -14,9 +14,7 @@ const menuItems = [
 ];
 
 const Sidebar = ({ location }) => {
-  const isActive = index =>
-    menuItems[index].text === location.pathname.slice(1);
-
+  const isActive = index => location.pathname.includes(menuItems[index].text);
   return (
     <aside id="sidebar">
       <h2>
