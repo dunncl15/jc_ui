@@ -3,18 +3,19 @@ import { NavLink } from 'react-router-dom';
 import './Sidebar.scss';
 
 const menuItems = [
-  'users',
-  'systems',
-  'policies',
-  'groups',
-  'applications',
-  'directories',
-  'commands',
-  'radius',
+  { text: 'users', icon: 'supervisor_account' },
+  { text: 'systems', icon: 'devices' },
+  { text: 'policies', icon: 'security' },
+  { text: 'groups', icon: 'group_work' },
+  { text: 'applications', icon: 'widgets' },
+  { text: 'directories', icon: 'storage' },
+  { text: 'commands', icon: 'subtitles' },
+  { text: 'radius', icon: 'wifi_tethering' },
 ];
 
 const Sidebar = ({ location }) => {
-  const isActive = index => menuItems[index] === location.pathname.slice(1);
+  const isActive = index =>
+    menuItems[index].text === location.pathname.slice(1);
 
   return (
     <aside id="sidebar">
@@ -22,22 +23,33 @@ const Sidebar = ({ location }) => {
         Jump<span>Cloud</span>
       </h2>
       <ul className="menu">
-        {menuItems.map((item, i) => (
+        {menuItems.map(({ text, icon }, i) => (
           <li key={i + 1}>
             <NavLink
               isActive={() => isActive(i)}
               className="menu-item"
-              to={`/${item}`}
+              to={`/${text}`}
             >
-              {item}
+              <i className="material-icons">{icon}</i>
+              {text}
             </NavLink>
           </li>
         ))}
       </ul>
       <footer>
-        <ul>
-          <li>Settings</li>
-          <li>Support</li>
+        <ul className="menu">
+          <li>
+            <NavLink className="menu-item" to="/settings">
+              <i className="material-icons">settings</i>
+              Settings
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="menu-item" to="/support">
+              <i className="material-icons">question_answer</i>
+              Support
+            </NavLink>
+          </li>
         </ul>
       </footer>
     </aside>
