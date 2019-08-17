@@ -1,0 +1,18 @@
+.error-wrapper {
+  margin: 25px;
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-right: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 2em;
+  }
+
+  span {
+    color: #e54852;
+  }
+}
