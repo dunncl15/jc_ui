@@ -1,9 +1,10 @@
 import React from 'react';
+import { post, put } from '../../../api/api_client';
 import useInput from '../../../hooks/useInput';
 import Input from '../../Input/Input';
 import './NewUserForm.scss';
 
-const NewUserForm = ({ data = {}, id, history, saveNewUser, updateUser }) => {
+const NewUserForm = ({ data = {}, id, history, saveNewUser, updateUser, setError }) => {
   const { value: firstname, handleChange: setFirstName } = useInput(data.firstname);
   const { value: middlename, handleChange: setMiddleName } = useInput(data.middlename);
   const { value: lastname, handleChange: setLastName } = useInput(data.lastname);
@@ -12,12 +13,8 @@ const NewUserForm = ({ data = {}, id, history, saveNewUser, updateUser }) => {
   const { value: email, handleChange: setEmail } = useInput(data.email);
   const { value: description, handleChange: setDescription } = useInput(data.description);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    const url = id
-      ? `http://localhost:8005/api/systemusers/${id}`
-      : 'http://localhost:8005/api/systemusers';
-    const method = id ? 'PUT' : 'POST';
     const userData = {
       firstname,
       middlename,
@@ -27,18 +24,13 @@ const NewUserForm = ({ data = {}, id, history, saveNewUser, updateUser }) => {
       email,
       description,
     };
-    fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
-      .then(res => res.json())
-      .then(data => {
-        id ? updateUser(data) : saveNewUser(data);
-        history.push('/users');
-      });
+    try {
+      const data = id ? await put(id, userData) : await post(userData);
+      id ? updateUser(data) : saveNewUser(data);
+      history.push('/users');
+    } catch (e) {
+      setError(e.text);
+    }
   };
 
   return (
