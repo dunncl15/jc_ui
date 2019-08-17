@@ -13,8 +13,9 @@ const menuItems = [
   { text: 'radius', icon: 'wifi_tethering' },
 ];
 
-const Sidebar = ({ location }) => {
+const Sidebar = ({ location, history }) => {
   const isActive = index => location.pathname.includes(menuItems[index].text);
+  if (location.pathname === '/') history.push('/users')
   return (
     <aside id="sidebar">
       <h2>
