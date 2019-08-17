@@ -4,6 +4,7 @@
   background-color: rgb(32, 45, 55);
   color: #fff;
   font-weight: 600;
+  overflow: scroll;
 
   h2 {
     margin: 0 0 40px 0;
@@ -47,8 +48,17 @@
         border-left: 4px solid #12849a;
       }
     }
+    li:last-child {
+      > a {
+        text-transform: uppercase;
+      }
+    }
   }
+
   footer {
     margin-top: 25px;
+    .menu > li > a {
+      text-transform: capitalize !important;
+    }
   }
 }
